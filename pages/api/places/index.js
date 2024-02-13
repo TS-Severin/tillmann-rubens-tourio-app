@@ -12,4 +12,20 @@ export default async function handler(request, response) {
       console.log("======= ERROR MF: ", error);
     }
   }
+
+  if (request.method === "POST") {
+    try {
+      const newPlaceData = request.body;
+      // await Place.create(newPlaceData);
+      const place = new Place(newPlaceData); // takes the form data and connects it to the model "Place" usign the placeData received from the "Form"
+      await place.save();
+      response.status(201).json({ status: "Place created" });
+      console.log("RESPONSE:", response);
+    } catch (e) {
+      console.log("No place Found --->: ", e);
+    }
+  }
+  // } catch (e) {
+  //  console.log("==== Error MF: ", e);
+  //
 }
