@@ -4,8 +4,8 @@ const { Schema } = mongoose;
 const placeSchema = new Schema({
   name: { type: String, require: true },
   location: { type: String, require: true },
-  image: { type: String, require: true },
-  mapURL: { type: String, require: true },
+  image: { type: String, require: false },
+  mapURL: { type: String, require: false },
   description: { type: String, require: true },
   comments: { type: Array, require: false },
   // comments: requaired? Answer: Nope
