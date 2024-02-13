@@ -1,11 +1,27 @@
-import { db_places } from "../../../../lib/db_places";
-import { db_comments } from "../../../../lib/db_comments";
+import dbConnect from "../../../db/connect";
+import Place from "../../../db/model/Place";
 
-export default function handler(request, response) {
+export default async function handler(request, response) {
   const { id } = request.query;
 
-  if (!id) {
-    return;
+  // try {
+  // if (!id) {
+  //   return;
+  // }
+
+  try {
+    await dbConnect();
+
+    try {
+      if (request.method === "GET") {
+        const places = await Place.findById(id);
+        return response.status(200).json(places);
+      }
+    } catch (e) {
+      console.log("==== Error MF: ", e);
+    }
+  } catch (e) {
+    console.log("==== Error MF: ", e);
   }
 
   const place = db_places.find((place) => place._id.$oid === id);
