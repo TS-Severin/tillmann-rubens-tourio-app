@@ -46,6 +46,84 @@ export default function DetailsPage() {
     console.log("deleted?");
   }
 
+  // SOLUTION ONE: (not f#cking arround)
+
+  // async function deletePlace() {
+  //   // Send a DELETE request to your backend server
+  //   await fetch(`/api/places/${id}`, {
+  //     method: "DELETE",
+  //   }),
+  //   router.push("/");
+  //   return;
+  // }
+  //===============================
+  // SOLUTION TWO: (some add ons)
+
+  async function deletePlace() {
+    if (confirm("are you sure?")) {
+      if (confirm("are really you sure?")) {
+        if (confirm("last chance: really, REALLY sure??")) {
+          if (
+            confirm(
+              "I know what you are thinking: were there five or six sures? Well... Are you feeling lucky, Punk?"
+            )
+          ) {
+            await fetch(`/api/places/${id}`, {
+              method: "DELETE",
+            });
+            router.push("/");
+            return;
+          }
+        }
+      }
+    }
+  }
+  //===============================
+
+  //Solution THREE: (Good old js no react)
+  // const App = () => {
+  //   const [data, setData] = useState([]);
+
+  //   // Fetch data from MongoDB
+  //   useEffect(() => {
+  //     fetchData();
+  //   }, []);
+
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get('YOUR_API_ENDPOINT'); // Replace with your API endpoint
+  //       setData(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+
+  //   const handleDelete = async (id) => {
+  //     try {
+  //       await axios.delete(`YOUR_API_ENDPOINT/${id}`); // Replace with your API endpoint
+  //       fetchData(); // Refresh data after deletion
+  //     } catch (error) {
+  //       console.error('Error deleting data:', error);
+  //     }
+  //   };
+
+  //   return (
+  //     <div>
+  //       <h1>Entries</h1>
+  //       <ul>
+  //         {data.map((entry) => (
+  //           <li key={entry._id}>
+  //             {entry.name}{' '}
+  //             <button onClick={() => handleDelete(entry._id)}>Delete</button>
+  //           </li>
+  //         ))}
+  //       </ul>
+  //     </div>
+  //   );
+  // };
+
+  // export default App;
+
   return (
     <>
       <Link href={"/"} passHref legacyBehavior>

@@ -19,7 +19,11 @@ export default async function handler(request, response) {
       console.log("==== Error MF: ", e);
     }
   }
-
+  if (request.method === "DELETE") {
+    const deleteEntryPlace = await Place.findByIdAndDelete(id);
+    await Comment.deleteOne({ _id: { $in: deleteEntryPlace.comments } });
+    response.status(201).json("Entry Deleted");
+  }
   // const place = db_places.find((place) => place._id.$oid === id);
   // const comment = place?.comments;
   // const allCommentIds = comment?.map((comment) => comment.$oid) || [];
