@@ -1,20 +1,14 @@
 import styled from "styled-components";
 import { FormContainer, Input, Label } from "./Form";
 import { StyledButton } from "./StyledButton.js";
+import { db_comments } from "../lib/db_comments.js";
 
-export default function Comments({ locationName, comments }) {
+export default function Comments({ name, comment, _id }) {
   const Article = styled.article`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 5px solid black;
-    border-radius: 0.8rem;
     padding: 0.5rem;
-    text-align: center;
-    p {
-      border-bottom: solid 1px black;
-      padding: 20px;
-    }
+    font-size: inherit;
+    border: 3px solid black;
+    border-radius: 0.5rem;
   `;
 
   function handleSubmitComment(e) {
@@ -41,6 +35,8 @@ export default function Comments({ locationName, comments }) {
                     <strong>{name}</strong> commented on {locationName}
                   </small>
                 </p>
+                {/* Just a small test  */}
+                <p> Testing Testing</p>
                 <span>{comment}</span>
               </>
             );

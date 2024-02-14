@@ -6,6 +6,7 @@ import { StyledLink } from "../../../components/StyledLink.js";
 import { StyledButton } from "../../../components/StyledButton.js";
 import { StyledImage } from "../../../components/StyledImage.js";
 import Comments from "../../../components/Comments.js";
+import { db_comments } from "../../db_comments.js";
 
 const ImageContainer = styled.div`
   position: relative;
@@ -57,7 +58,7 @@ export default function DetailsPage() {
   //   return;
   // }
   //===============================
-  // SOLUTION TWO: (some add ons)
+  // SOLUTION TWO: (some add-ons)
 
   async function deletePlace() {
     if (confirm("Are you sure?")) {
@@ -124,6 +125,49 @@ export default function DetailsPage() {
 
   // export default App;
 
+  //=======================================
+  // SOLUTION COMMENTS ONE:
+
+  // function Comments({ name,  }) {
+  //   return (
+  //     <>
+  //       <h3>Comments</h3>
+  //       <ul>
+  //         {comments.map((comment) => (
+  //           <li key={review._idx}>
+  //             <p>
+  //               {review.rating}/5: {review.text}
+  //             </p>
+  //           </li>
+  //         ))}
+  //       </ul>
+  //     </>
+  //   );
+  // }
+  //=========================================
+  // SOLUTION COMMENTS TWO:
+
+  // const handleSubmitComment = async (e) => {
+  //   e.preventDefault();
+  //   const name = await name.findById(id);
+  //   const comment = comment.findById(id);
+  //   conslole.log("===== Name: ", name);
+
+  //   const response = await fetch(`/api/places/${id}`, {
+  //     method: "POST",
+  //     //   // headers: {
+  //     //   //   "Content-Type": "application/json",
+  //     //   },
+  //     //   body: JSON.stringify(commentData),
+  //   });
+  //   if (response.ok) {
+  //     mutate();
+  //   } else {
+  //     console.error(`Error: ${response.status}`);
+  //   }
+  // };
+
+  //===================================
   return (
     <>
       <Link href={"/"} passHref legacyBehavior>
