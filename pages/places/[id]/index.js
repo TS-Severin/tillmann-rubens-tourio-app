@@ -60,12 +60,12 @@ export default function DetailsPage() {
   // SOLUTION TWO: (some add ons)
 
   async function deletePlace() {
-    if (confirm("are you sure?")) {
-      if (confirm("are really you sure?")) {
-        if (confirm("last chance: really, REALLY sure??")) {
+    if (confirm("Are you sure?")) {
+      if (confirm("Are YOU really sure?")) {
+        if (confirm("Last chance! - Really, really REALLY SURE??")) {
           if (
             confirm(
-              "I know what you are thinking: were there five or six sures? Well... Are you feeling lucky, Punk?"
+              "I know what you are thinking: - Were there 5 or 6 *sures*? Well... Are you feeling lucky, Punk?"
             )
           ) {
             await fetch(`/api/places/${id}`, {

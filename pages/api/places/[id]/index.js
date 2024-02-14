@@ -8,17 +8,17 @@ export default async function handler(request, response) {
     return;
   }
 
-  // try {
   await dbConnect();
 
   if (request.method === "GET") {
-    try {
-      const place = await Place.findById(id);
-      return response.status(200).json(place);
-    } catch (e) {
-      console.log("==== Error MF: ", e);
-    }
+    const place = await Place.findById(id);
+    return response.status(200).json(place);
+  } else if (request.method === "PUT") {
+    await Place.findByIdAndUpdate(id, {
+      $set: request.body,
+    });
   }
+
   if (request.method === "DELETE") {
     const deleteEntryPlace = await Place.findByIdAndDelete(id);
     await Comment.deleteOne({ _id: { $in: deleteEntryPlace.comments } });
